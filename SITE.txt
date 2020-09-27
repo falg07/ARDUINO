@@ -1,0 +1,33 @@
+client.println("HTTP/1.1 200 OK"); //ESCREVE PARA O CLIENTE A VERSÃO DO HTTP
+          client.println("Content-Type: text/html"); //ESCREVE PARA O CLIENTE O TIPO DE CONTEÚDO(texto/html)
+          client.println("Refresh: 2");
+          client.println("");
+          client.println("<!DOCTYPE HTML>"); //INFORMA AO NAVEGADOR A ESPECIFICAÇÃO DO HTML
+          client.println("<html>"); //ABRE A TAG "html"
+          client.println("<head>"); //ABRE A TAG "head"
+          client.println("<link rel='icon' type='image/png' href='https://blogmasterwalkershop.com.br/arquivos/artigos/sub_wifi/logo_mws.png'/>"); //DEFINIÇÃO DO ICONE DA PÁGINA
+          client.println("<title>MasterWalker Shop - Controle de Led via Web server</title>"); //ESCREVE O TEXTO NA PÁGINA
+          client.println("</head>"); //FECHA A TAG "head"
+          client.println("<body style=background-color:#ADD8E6>"); //DEFINE A COR DE FUNDO DA PÁGINA
+          client.println("<center><font color='blue'><h1>CONTROLE ESTOQUE - SUPERMERCADO</font></center></h1>"); //ESCREVE "CONTROLE ESTOQUE - SUPERMERCADO" EM COR AZUL NA PÁGINA
+          client.println("<h2><center>PRATELEIRA - LATAS, GARRAFAS, VIDROS</center></h2>"); //ESCREVE "PRATELEIRA - LATAS, GARRAFAS, VIDROS" NA PÁGINA
+          if (status == 0){ //SE VARIÁVEL FOR IGUAL A 0, FAZ
+          
+          //A LINHA ABAIXO CRIA UM FORMULÁRIO CONTENDO UMA ENTRADA INVISÍVEL(hidden) COM O PARÂMETRO DA URL E CRIA UM BOTÃO APAGAR (CASO O LED ESTEJA LIGADO)
+         // client.println("<center><form method=get name=LED><input type=hidden name=ledParam value=0 /><input type=submit value=APAGAR></form></center>");
+         // }else{ //SENÃO, FAZ
+          //A LINHA ABAIXO CRIA UM FORMULÁRIO CONTENDO UMA ENTRADA INVISÍVEL(hidden) COM O PARÂMETRO DA URL E CRIA UM BOTÃO ACENDER (CASO O LED ESTEJA DESLIGADO)
+         // client.println("<center><form method=get name=LED><input type=hidden name=ledParam value=1 /><input type=submit value=ACENDER></form></center>");
+          }
+          client.println("<center><font size='5'>Status atual da Prateleira: </center>"); //ESCREVE "Status atual da Prateleira:" NA PÁGINA
+          if (status == 1){ //SE VARIÁVEL FOR IGUAL A 1, FAZ
+              client.println("<center><font color='green' size='5'>CHEIO</center>"); //ESCREVE "CHEIO" EM COR VERDE NA PÁGINA
+          }else{ //SENÃO, FAZ  
+              client.println("<center><font color='red' size='5'>VAZIO - ABASTECER</center>"); //ESCREVE "VAZIO - ABASTECER" EM COR VERMELHA NA PÁGINA
+          }    
+          client.println("<hr/>"); //TAG HTML QUE CRIA UMA LINHA HORIZONTAL NA PÁGINA
+          client.println("<hr/>"); //TAG HTML QUE CRIA UMA LINHA HORIZONTAL NA PÁGINA
+          client.println("</body>"); //FECHA A TAG "body"
+          client.println("</html>"); //FECHA A TAG "html"
+          readString=""; //A VARIÁVEL É REINICIALIZADA
+          client.stop(); //FINALIZA A REQUISIÇÃO HTTP E DESCONECTA O CLIENTE
